@@ -1,262 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/js.css" />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <style>
+      form {
+        padding: 20px;
+        margin: 20px auto;
+        width: 70%;
+      }
+      .brt{
+        margin-bottom: 50px;
+      }
+      /* .submit{
+        margin-top: 100px;
+      } */
+    </style>
+    <title>Sign up page</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/js.css" />
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
-  <style>
-    form {
-      padding: 20px;
-      margin: 20px auto;
-      width: 70%;
-    }
-  </style>
-  <title>Sign up page</title>
-</head>
+  <body class="white">
+    <div class="container grey lighten-3 white-text brt">
+      <h2 class="center">Sign Up</h2>
 
-<body class="white">
-  <div class="container grey lighten-3 white-text">
-    <h2 class="center">Sign Up</h2>
+      <form id="loginval">
+        <label>FirstName:</label>
+        <input type="text" name="firstname" /><br>
+        <label>LastName:</label>
+        <input type="text" name="lastname" /><br>
+        <label>UsernameName:</label>
+        <input type="text" name="username" id="username" />
+        <label>E-mail:</label>
+        <input type="email" name="email" id="email" /><br>
+        <label>Phone number:</label>
+        <input type="number" name="phone" id="phone" />
+        <p>
+          <label>
+            <input name="gender" value="male" type="radio" checked />
+            <span>Male</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="gender" value="female" type="radio" />
+            <span>Female</span>
+          </label>
+        </p>
+        <label>Password:</label>
+        <input type="password" name="password" id="pass" class="password" />
+        <p>
+          <label>
+            <input type="checkbox" id="showPassword" />
+            <span>show password</span>
+          </label>
+        </p>
+        <label>Comfirm password:</label>
+        <input type="password" name="password2" class="comfirmationPassword" /><br>
 
-    <form id="loginval">
-      <label>FirstName:</label>
-      <input type="text" name="firstname" />
-      <label>LastName:</label>
-      <input type="text" name="lastname" />
-      <label>UsernameName:</label>
-      <input type="text" name="username" id="username" />
-      <label>E-mail:</label>
-      <input type="email" name="email" id="email" />
-      <label>Phone number:</label>
-      <input type="number" name="phone" id="phone" />
-      <p>
-        <label>
-          <input name="gender" value="male" type="radio" checked />
-          <span>Male</span>
-        </label>
-      </p>
-      <p>
-        <label>
-          <input name="gender" value="female" type="radio" />
-          <span>Female</span>
-        </label>
-      </p>
-      <label>Password:</label>
-      <input type="password" name="password" id="pass" class="password" />
-      <p>
-        <label>
-          <input type="checkbox" id="showPassword" />
-          <span>show password</span>
-        </label>
-      </p>
-      <label>Comfirm password:</label>
-      <input type="password" name="password2" class="comfirmationPassword" />
-      <p>
-        <label>
-          <input type="checkbox" id="showComfirmPassword" />
-          <span>show password</span>
-        </label>
-      </p>
-      <div class="input-field center">
-        <input type="submit" class="btn" value="Sign Up" id="submit" />
-      </div>
-    </form>
-  </div>
-  <!-- end of the form -->
+        <div class="input-field center submit">
+          <input type="submit" class="btn" value="Sign Up" id="submit" />
+        </div>
+      </form>
+    </div>
+    <!-- end of the form -->
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-  <script src="/js/index.js"></script>
-  <script>
-    $("document").ready(function () {
-      // show-hide password
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script>
+      $("document").ready(function () {
+        // show-hide password
 
-      $("#showPassword").click(function () {
-        var passwordField = $(".password");
-        var currentpassword = passwordField.val();
-        passwordField.remove();
-        if ($(this).is(":checked")) {
-          $(this).before(
-            '<input type="text" name="password" class="password" id="pass" value ="' +
-            currentpassword +
-            '">'
-          ); 
-
-        } else {
-           $(this).before(
-            '<input type="password" name="password1" class="password" id="pass" value ="' +
-            currentpassword +
-            '">'
-          );
-        }
-      });
-      // show-hide comfirmation password
-
-      $("#showComfimPassword").click(function () {
-        var comfirmationpasswordField = $(".comfirmationPassword");
-        var currentComfirmpassword = comfirmationpasswordField.val();
-        comfirmationpasswordField.remove();
-        if ($(this).is(":checked")) {
-          $(this).before(
-            '<input type="text" name="password2" class="comfirmationPassword" value ="' +
-            currentComfirmpassword +
-            '">'
-          );
-        } else {
-          $(this).before(
-            '<input type="password2" name="comfirmpassword" class="comfirmationPassword" value ="' +
-            currentComfirmpassword +
-            '">'
-          );
-        }
-      });
-
-      // form validation
-      $("#loginval").validate({
-        // Specify validation rules
-        rules: {
-          // The key name on the left side is the name attribute
-          // of an input field. Validation rules are defined
-          // on the right side
-          firstname: "required",
-          lastname: "required",
-          username: "required",
-          gender: "required",
-          email: {
-            required: true,
-            // Specify that email should be validated
-            // by the built-in "email" rule
-            email: true
-          },
-          password: {
-            required: true,
-            minlength: 5
+        $("#showPassword").click(function(){
+          var passwordField = $(".password");
+          if ($(this).is(":checked")) {
+            passwordField.attr('type','text');
+          } else {
+            passwordField.attr('type','password');
           }
-        },
-        // Specify validation error messages
-        messages: {
-          firstname: "Please enter your firstname",
-          lastname: "Please enter your lastname",
-          password: {
-            required: "Please provide a password",
-            minlength: "Your password must be at least 5 characters long"
+        });
+
+
+        // form validation
+        $("#loginval").validate({
+          // Specify validation rules
+          rules: {
+            // The key name on the left side is the name attribute
+            // of an input field. Validation rules are defined
+            // on the right side
+            firstname: "required",
+            lastname: "required",
+            username: "required",
+            email: {
+              required: true,
+              // Specify that email should be validated
+              // by the built-in "email" rule
+              email: true,
+            },
+            password: {
+              required: true,
+              minlength: 5,
+            },
           },
-          email: "Please enter a valid email address"
-        },
-        // Make sure the form is submitted to the destination defined
-        // in the "action" attribute of the form when valid
-        submitHandler: function (form) {
-          form.submit();
+          // Specify validation error messages
+          messages: {
+            firstname: "Please enter your firstname",
+            lastname: "Please enter your lastname",
+            password: {
+              required: "Please provide a password",
+              minlength: "Your password must be at least 5 characters long",
+            },
+            email: "Please enter a valid email address",
+          },
+          // Make sure the form is submitted to the destination defined
+          // in the "action" attribute of the form when valid
+          submitHandler: function (form) {
+            form.submit();
+          },
+        });
+      });
+
+      // email validation
+      $("#email").keyup(function () {
+        if (validateEmail()) {
+          $("#email").css("background", "green");
+        } else {
+          $("#email").css("background", "red");
         }
       });
-    });
 
-    // email validation
-    $("#email").keyup(function () {
-      if (validateEmail()) {
-        $("#email").css("background", "green");
-      } else {
-        $("#email").css("background", "red");
+      // password validation
+      $("#pass").keyup(function () {
+        if (ValidationPassword()) {
+          $("#pass").css("background", "green");
+        } else {
+          $("#pass").css("background", "red");
+        }
+      });
+
+      // phone number validation
+
+      $("#phone").keyup(function () {
+        if (ValidationNumber()) {
+          $("#phone").css("background", "green");
+        } else {
+          $("#phone").css("background", "red");
+        }
+      });
+
+      // username validation
+
+      $("#username").keyup(function () {
+        if (ValidationUsername()) {
+          $("#username").css("background", "green");
+        } else {
+          $("#username").css("background", "red");
+        }
+      });
+
+      // function use for validation
+
+      // email validation
+
+      function validateEmail() {
+        // get value of the input
+        var email = $("#email").val();
+        // use regular expression
+        var reg =
+          /(?:((?:[\w-]+(?:\.[\w-]+)*)@(?:(?:[\w-]+\.)*\w[\w-]{0,66})\.(?:[a-z]{2,6}(?:\.[a-z]{2})?));*)/;
+
+        if (reg.test(email)) {
+          return true;
+        } else {
+          return false;
+        }
       }
-    });
 
-    // password validation
-    $("#pass").keyup(function () {
-      if (ValidationPassword()) {
-        $("#pass").css("background", "green");
-      } else {
-        $("#pass").css("background", "red");
+      // password validation
+
+      function ValidationPassword() {
+        // get the value input
+        var pass = $("#pass").val();
+        // use reguler expression
+
+        var reg = /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/;
+        if (reg.test(pass)) {
+          return true;
+        } else {
+          return false;
+        }
       }
-    });
 
-    // phone number validation
+      // phone number validation
 
-    $("#phone").keyup(function () {
-      if (ValidationNumber()) {
-        $("#phone").css("background", "green");
-      } else {
-        $("#phone").css("background", "red");
+      function ValidationNumber() {
+        // get the value input
+        var phone = $("#phone").val();
+        // use reguler expression
+
+        var reg = /^[0-9]{11}$/;
+        if (reg.test(phone)) {
+          return true;
+        } else {
+          return false;
+        }
       }
-    });
 
-    // username validation
+      // username validation
 
-    $("#username").keyup(function () {
-      if (ValidationUsername()) {
-        $("#username").css("background", "green");
-      } else {
-        $("#username").css("background", "red");
+      function ValidationUsername() {
+        // get the value input
+        var username = $("#username").val();
+        // use reguler expression
+
+        var reg = /^[a-z0-9_-]{5,15}$/;
+        if (reg.test(username)) {
+          return true;
+        } else {
+          return false;
+        }
       }
-    });
-    
-
-    // function use for validation
-
-    // email validation
-
-    function validateEmail() {
-      // get value of the input
-      var email = $("#email").val();
-      // use regular expression
-      var reg =
-        /(?:((?:[\w-]+(?:\.[\w-]+)*)@(?:(?:[\w-]+\.)*\w[\w-]{0,66})\.(?:[a-z]{2,6}(?:\.[a-z]{2})?));*)/;
-
-      if (reg.test(email)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    // password validation
-
-    function ValidationPassword() {
-      // get the value input
-      var pass = $("#pass").val();
-      // use reguler expression
-
-      var reg = /^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/;
-      if (reg.test(pass)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    // phone number validation
-
-    function ValidationNumber() {
-      // get the value input
-      var phone = $("#phone").val();
-      // use reguler expression
-
-      var reg = /^[0-9]{11}$/;
-      if (reg.test(phone)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    // username validation
-
-    function ValidationUsername() {
-      // get the value input
-      var username = $("#username").val();
-      // use reguler expression
-
-      var reg = /^[a-z0-9_-]{5,15}$/;
-      if (reg.test(username)) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
